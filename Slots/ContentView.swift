@@ -10,7 +10,11 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello World")
+        ZStack {
+            Rectangle()
+                .foregroundColor(Color(red: 200/255, green: 143/255, blue: 32/255))
+                .edgesIgnoringSafeArea(.all)
+        }
     }
 }
 
