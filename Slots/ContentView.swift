@@ -11,8 +11,8 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var symbols = ["apple", "cherry", "star"]
-    @State private var numbers = [0, 1, 2]
-    @State private var backgrounds = [Color.white, Color.white, Color.white]
+    @State private var numbers = Array(repeating: 0, count: 9)
+    @State private var backgrounds = Array(repeating: Color.white, count: 9)
     @State private var credits = 1000
     private var betAmount = 5
     
@@ -50,14 +50,34 @@ struct ContentView: View {
                 
                 Spacer()
                 //Cards
-                HStack {
-                    Spacer()
-                    
-                    CardView(symbol: $symbols[numbers[0]], background: $backgrounds[0])
-                    CardView(symbol: $symbols[numbers[1]], background: $backgrounds[1])
-                    CardView(symbol: $symbols[numbers[2]], background: $backgrounds[2])
-                    
-                    Spacer()
+                VStack {
+                    HStack {
+                        Spacer()
+                        
+                        CardView(symbol: $symbols[numbers[0]], background: $backgrounds[0])
+                        CardView(symbol: $symbols[numbers[1]], background: $backgrounds[1])
+                        CardView(symbol: $symbols[numbers[2]], background: $backgrounds[2])
+                        
+                        Spacer()
+                    }
+                    HStack {
+                        Spacer()
+                        
+                        CardView(symbol: $symbols[numbers[3]], background: $backgrounds[3])
+                        CardView(symbol: $symbols[numbers[4]], background: $backgrounds[4])
+                        CardView(symbol: $symbols[numbers[5]], background: $backgrounds[5])
+                        
+                        Spacer()
+                    }
+                    HStack {
+                        Spacer()
+                        
+                        CardView(symbol: $symbols[numbers[6]], background: $backgrounds[6])
+                        CardView(symbol: $symbols[numbers[7]], background: $backgrounds[7])
+                        CardView(symbol: $symbols[numbers[8]], background: $backgrounds[8])
+                        
+                        Spacer()
+                    }
                 }
                 
                 Spacer()
