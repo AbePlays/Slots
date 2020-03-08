@@ -82,16 +82,36 @@ struct ContentView: View {
                 
                 Spacer()
                 //Button
-                Button(action: {
-                    self.processResults()
-                }) {
-                    Text("Spin")
-                        .bold()
-                        .foregroundColor(.white)
-                        .padding(.all, 10)
-                        .padding([.leading, .trailing], 30)
-                        .background(Color.pink)
-                    .cornerRadius(20)
+                HStack(spacing: 20) {
+                    VStack {
+                        Button(action: {
+                            self.processResults()
+                        }) {
+                            Text("Spin")
+                                .bold()
+                                .foregroundColor(.white)
+                                .padding(.all, 10)
+                                .padding([.leading, .trailing], 30)
+                                .background(Color.pink)
+                                .cornerRadius(20)
+                        }
+                        Text("\(betAmount) credits").foregroundColor(.white).padding(.top, 10).font(.footnote)
+                    }
+                    
+                    VStack {
+                        Button(action: {
+                            self.processResults(true)
+                        }) {
+                            Text("Max Spin")
+                                .bold()
+                                .foregroundColor(.white)
+                                .padding(.all, 10)
+                                .padding([.leading, .trailing], 30)
+                                .background(Color.pink)
+                                .cornerRadius(20)
+                        }
+                        Text("\(betAmount * 5) credits").foregroundColor(.white).padding(.top, 10).font(.footnote)
+                    }
                 }
                 Spacer()
             }
@@ -125,7 +145,7 @@ struct ContentView: View {
         if isMax {
             //Top Row
             if self.numbers[0] == self.numbers[1] && self.numbers[1] == self.numbers[2] {
-
+                
                 matches += 1
                 self.backgrounds[0] = Color.green
                 self.backgrounds[1] = Color.green
@@ -134,7 +154,7 @@ struct ContentView: View {
             
             //Middle Row
             if self.numbers[3] == self.numbers[4] && self.numbers[4] == self.numbers[5] {
-
+                
                 matches += 1
                 self.backgrounds[3] = Color.green
                 self.backgrounds[4] = Color.green
@@ -143,7 +163,7 @@ struct ContentView: View {
             
             //Bottom Row
             if self.numbers[6] == self.numbers[7] && self.numbers[7] == self.numbers[8] {
-
+                
                 matches += 1
                 self.backgrounds[6] = Color.green
                 self.backgrounds[7] = Color.green
@@ -152,7 +172,7 @@ struct ContentView: View {
             
             //Diagonal1
             if self.numbers[0] == self.numbers[4] && self.numbers[4] == self.numbers[8] {
-
+                
                 matches += 1
                 self.backgrounds[0] = Color.green
                 self.backgrounds[4] = Color.green
@@ -161,7 +181,7 @@ struct ContentView: View {
             
             //Diagonal2
             if self.numbers[2] == self.numbers[4] && self.numbers[4] == self.numbers[6] {
-
+                
                 matches += 1
                 self.backgrounds[2] = Color.green
                 self.backgrounds[4] = Color.green
@@ -170,7 +190,7 @@ struct ContentView: View {
             
         } else {
             if self.numbers[3] == self.numbers[4] && self.numbers[4] == self.numbers[5] {
-
+                
                 matches += 1
                 self.backgrounds[3] = Color.green
                 self.backgrounds[4] = Color.green
