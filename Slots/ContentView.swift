@@ -83,22 +83,7 @@ struct ContentView: View {
                 Spacer()
                 //Button
                 Button(action: {
-                    self.backgrounds[0] = Color.white
-                    self.backgrounds[1] = Color.white
-                    self.backgrounds[2] = Color.white
-                    
-                    self.numbers[0] = Int.random(in: 0...self.symbols.count - 1)
-                    self.numbers[1] = Int.random(in: 0...self.symbols.count - 1)
-                    self.numbers[2] = Int.random(in: 0...self.symbols.count - 1)
-                    
-                    if self.numbers[0] == self.numbers[1] && self.numbers[1] == self.numbers[2] {
-                        self.credits += self.betAmount * 10
-                        self.backgrounds[0] = Color.green
-                        self.backgrounds[1] = Color.green
-                        self.backgrounds[2] = Color.green
-                    } else {
-                        self.credits -= self.betAmount
-                    }
+                    self.processResults()
                 }) {
                     Text("Spin")
                         .bold()
@@ -111,6 +96,96 @@ struct ContentView: View {
                 Spacer()
             }
         }
+    }
+    
+    func processResults(_ isMax: Bool=false) {
+        
+        self.backgrounds = self.backgrounds.map({_ in
+            Color.white
+        })
+        
+        if isMax {
+            self.numbers = self.numbers.map({_ in
+                Int.random(in: 0...self.symbols.count - 1)
+            })
+        } else {
+            self.numbers[3] = Int.random(in: 0...self.symbols.count - 1)
+            self.numbers[4] = Int.random(in: 0...self.symbols.count - 1)
+            self.numbers[5] = Int.random(in: 0...self.symbols.count - 1)
+        }
+        
+        processWin(isMax)
+        
+    }
+    
+    func processWin(_ isMax: Bool=false) {
+        
+        var matches = 0
+        
+        if isMax {
+            //Top Row
+            if self.numbers[0] == self.numbers[1] && self.numbers[1] == self.numbers[2] {
+
+                matches += 1
+                self.backgrounds[0] = Color.green
+                self.backgrounds[1] = Color.green
+                self.backgrounds[2] = Color.green
+            }
+            
+            //Middle Row
+            if self.numbers[3] == self.numbers[4] && self.numbers[4] == self.numbers[5] {
+
+                matches += 1
+                self.backgrounds[3] = Color.green
+                self.backgrounds[4] = Color.green
+                self.backgrounds[5] = Color.green
+            }
+            
+            //Bottom Row
+            if self.numbers[6] == self.numbers[7] && self.numbers[7] == self.numbers[8] {
+
+                matches += 1
+                self.backgrounds[6] = Color.green
+                self.backgrounds[7] = Color.green
+                self.backgrounds[8] = Color.green
+            }
+            
+            //Diagonal1
+            if self.numbers[0] == self.numbers[4] && self.numbers[4] == self.numbers[8] {
+
+                matches += 1
+                self.backgrounds[0] = Color.green
+                self.backgrounds[4] = Color.green
+                self.backgrounds[8] = Color.green
+            }
+            
+            //Diagonal2
+            if self.numbers[2] == self.numbers[4] && self.numbers[4] == self.numbers[6] {
+
+                matches += 1
+                self.backgrounds[2] = Color.green
+                self.backgrounds[4] = Color.green
+                self.backgrounds[6] = Color.green
+            }
+            
+        } else {
+            if self.numbers[3] == self.numbers[4] && self.numbers[4] == self.numbers[5] {
+
+                matches += 1
+                self.backgrounds[3] = Color.green
+                self.backgrounds[4] = Color.green
+                self.backgrounds[5] = Color.green
+            }
+        }
+        
+        if matches > 0 {
+            self.credits += self.betAmount * 2 * matches
+        } else if !isMax {
+            self.credits -= self.betAmount
+        } else {
+            self.credits -= self.betAmount * 5
+        }
+        
     }
 }
 
