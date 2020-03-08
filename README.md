@@ -17,6 +17,10 @@ Slots is an iOS app built using Apple's latest framework SwiftUI. Hit the Spin b
 
 > This app is not available on the App Store.
 
+## Custom Features
+
+  There is an advance version of this app. Switch to "advance" branch to view it.
+
 ### Prerequisites
 
 - A Mac running macOS
@@ -27,7 +31,3 @@ Slots is an iOS app built using Apple's latest framework SwiftUI. Hit the Spin b
 1. Clone or download the project to your local machine
 2. Open the project in Xcode
 3. Run the simulator
-
-## Custom Features
-
-  There is an advance version of this app. Switch to "advance" branch to view it.
