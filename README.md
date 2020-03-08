@@ -1,6 +1,8 @@
 # Slots
 
-![Slots](home.png) 
+<div align="center">
+  <img src="./home.png" width="30%" height="30%">
+</div>
 
 ## Overview
 
