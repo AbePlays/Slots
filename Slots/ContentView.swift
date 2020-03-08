@@ -52,21 +52,9 @@ struct ContentView: View {
                 HStack {
                     Spacer()
                     
-                    Image(symbols[numbers[0]])
-                        .resizable()
-                        .aspectRatio(1, contentMode: .fit)
-                        .background(Color.white.opacity(0.5))
-                        .cornerRadius(20)
-                    Image(symbols[numbers[1]])
-                        .resizable()
-                        .aspectRatio(1, contentMode: .fit)
-                        .background(Color.white.opacity(0.5))
-                        .cornerRadius(20)
-                    Image(symbols[numbers[2]])
-                        .resizable()
-                        .aspectRatio(1, contentMode: .fit)
-                        .background(Color.white.opacity(0.5))
-                        .cornerRadius(20)
+                    CardView(symbol:Binding.constant("apple"))
+                    CardView(symbol:Binding.constant("apple"))
+                    CardView(symbol:Binding.constant("apple"))
                     
                     Spacer()
                 }
